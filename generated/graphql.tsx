@@ -81,6 +81,14 @@ export type UsernamePasswordInput = {
   username: Scalars['String'];
 };
 
+export type AddReminderMutationVariables = Exact<{
+  date: Scalars['DateTime'];
+  text: Scalars['String'];
+}>;
+
+
+export type AddReminderMutation = { __typename?: 'Mutation', addReminder: { __typename?: 'Reminder', _id: string, date: any, text: string } };
+
 export type LoginMutationVariables = Exact<{
   password: Scalars['String'];
   username: Scalars['String'];
@@ -106,7 +114,25 @@ export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type MeQuery = { __typename?: 'Query', me: { __typename?: 'User', _id: string, email: string, username: string, phoneNumber: number } };
 
+export type UserRemindersQueryVariables = Exact<{ [key: string]: never; }>;
 
+
+export type UserRemindersQuery = { __typename?: 'Query', userReminders: Array<{ __typename?: 'Reminder', _id: string, date: any, text: string }> };
+
+
+export const AddReminderDocument = gql`
+    mutation AddReminder($date: DateTime!, $text: String!) {
+  addReminder(date: $date, text: $text) {
+    _id
+    date
+    text
+  }
+}
+    `;
+
+export function useAddReminderMutation() {
+  return Urql.useMutation<AddReminderMutation, AddReminderMutationVariables>(AddReminderDocument);
+};
 export const LoginDocument = gql`
     mutation Login($password: String!, $username: String!) {
   login(password: $password, username: $username) {
@@ -169,4 +195,17 @@ export const MeDocument = gql`
 
 export function useMeQuery(options: Omit<Urql.UseQueryArgs<MeQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<MeQuery>({ query: MeDocument, ...options });
+};
+export const UserRemindersDocument = gql`
+    query UserReminders {
+  userReminders {
+    _id
+    date
+    text
+  }
+}
+    `;
+
+export function useUserRemindersQuery(options: Omit<Urql.UseQueryArgs<UserRemindersQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<UserRemindersQuery>({ query: UserRemindersDocument, ...options });
 };

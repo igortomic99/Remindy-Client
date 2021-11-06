@@ -15,9 +15,9 @@ export const DropdownMenu = ({ me }) => {
         aria-orientation="vertical"
         aria-labelledby="menu-button"
       >
-        <div className="py-1" role="none">
+        <div className="py-1 bg-white" role="none">
           <a
-            href="#"
+            href="/settings"
             className="text-gray-700 block px-4 py-2 text-sm"
             role="menuitem"
             id="menu-item-0"
@@ -25,12 +25,20 @@ export const DropdownMenu = ({ me }) => {
             Account settings
           </a>
           <a
-            href="#"
+            href="/support"
             className="text-gray-700 block px-4 py-2 text-sm"
             role="menuitem"
             id="menu-item-1"
           >
             Support
+          </a>
+          <a
+            href="/user-panel"
+            className="text-gray-700 block px-4 py-2 text-sm"
+            role="menuitem"
+            id="menu-item-2"
+          >
+            User panel
           </a>
           <form method="POST" action="#" role="none">
             <button

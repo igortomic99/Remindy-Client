@@ -1,0 +1,7 @@
+query UserReminders{
+  userReminders{
+    _id
+    date
+    text
+  }
+}
