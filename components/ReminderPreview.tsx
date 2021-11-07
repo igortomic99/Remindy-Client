@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import DateContext from "../context/dateContext";
+import TimeContext from "../context/timeContext";
 import { useAddReminderMutation } from "../generated/graphql";
 
 export const ReminderPreview = ({ text }) => {
     const [,addReminder] = useAddReminderMutation();
     const { day, month, year } = useContext(DateContext);
-    let date = new Date(year, month, day);
+    const {hours, minutes} = useContext(TimeContext);
+    let date = new Date(year, month, day , hours, minutes);
   return (
     <div className="card relative p-6 border w-96 h-96 bg-gray-300 rounded-md shadow-md -mt-96">
       <div className="title font-semibold text-lg mb-2">Your Reminder</div>

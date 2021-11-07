@@ -1,12 +1,33 @@
 import { useState } from "react";
 import "tailwindcss/tailwind.css";
 import DateContext, { defaultState } from "../context/dateContext";
+import TimeContext, { defaultState as timeState } from "../context/timeContext";
+
+const TimeProvider = ({ children }) => {
+  const [hours, setHours] = useState(timeState.hours);
+  const [minutes, setMinutes] = useState(timeState.minutes);
+  return (
+    <TimeContext.Provider
+      value={{
+        setHours: (Ihours) => {
+          setHours(Ihours);
+        },
+        setMinutes: (Iminutes) => {
+          setMinutes(Iminutes);
+        },
+        hours: hours,
+        minutes: minutes,
+      }}
+    >
+      {children}
+    </TimeContext.Provider>
+  );
+};
 
 const DateProvider = ({ children }) => {
   const [day, setDay] = useState(defaultState.day);
   const [month, setMonth] = useState(defaultState.month);
   const [year, setYear] = useState(defaultState.year);
-
   return (
     <DateContext.Provider
       value={{
@@ -15,9 +36,9 @@ const DateProvider = ({ children }) => {
           setYear(Iyear);
           setMonth(Imonth);
         },
-        day:day,
-        month:month,
-        year:year
+        day: day,
+        month: month,
+        year: year,
       }}
     >
       {children}
@@ -28,7 +49,9 @@ const DateProvider = ({ children }) => {
 function MyApp({ Component, pageProps }) {
   return (
     <DateProvider>
-      <Component {...pageProps} />
+      <TimeProvider>
+        <Component {...pageProps} />
+      </TimeProvider>
     </DateProvider>
   );
 }

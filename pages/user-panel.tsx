@@ -5,13 +5,12 @@ import { InputBox } from "../components/InputBox";
 import { Layout } from "../components/Layout";
 import { ReminderPreview } from "../components/ReminderPreview";
 import { Reminders } from "../components/Reminders";
+import { TimePicker } from "../components/TimePicker";
 import DateContext from "../context/dateContext";
 import { createUrqlClient } from "../utils/createUrqlClient";
 
 const UserPanel = () => {
   const [text, setText] = useState("");
-  const { day, month, year } = useContext(DateContext);
-  let date = new Date(year, month, day);
   const handleChange = (e) => {
     e.preventDefault();
     setText(e.target.value);
@@ -27,6 +26,11 @@ const UserPanel = () => {
       </div>
       <div className="float-right -mt-32 mr-28">
         <ReminderPreview text={text} />
+      </div>
+      <div className="ml-36">
+      <div className="ml-96 -mt-20">
+        <TimePicker/>
+      </div>
       </div>
     </Layout>
   );
