@@ -25,12 +25,12 @@ export const DropdownMenu = ({ me }) => {
             Account settings
           </a>
           <a
-            href="/support"
+            href="/subscribe"
             className="text-gray-700 block px-4 py-2 text-sm"
             role="menuitem"
             id="menu-item-1"
           >
-            Support
+            Subscribe
           </a>
           <a
             href="/user-panel"

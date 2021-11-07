@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import DateContext from "../context/dateContext";
 
 export interface CalendarRowProps {
   firstDay: number;
@@ -15,8 +16,9 @@ const CalendarRow: React.FC<CalendarRowProps> = ({
   currentMonth,
   currentYear,
 }) => {
+  const { day, month, year, setDate } = useContext(DateContext);
   const activeDay = useState(new Date().getDate())[0];
-
+  let chosenDay;
   let content = [];
   //first row with empty spaces
   if (!row) {
@@ -24,7 +26,11 @@ const CalendarRow: React.FC<CalendarRowProps> = ({
       content.push(<td></td>);
     }
     content.push(
-      <td className="relative py-3 px-2 md:px-3  hover:text-gray-500 text-center text-gray-800">
+      <td
+      onClick={() => {
+        setDate(2,currentMonth ,currentYear);
+      }}
+      className="relative py-3 px-2 md:px-3  hover:text-blue-600 text-center text-gray-800">
         1
       </td>
     );
@@ -35,13 +41,25 @@ const CalendarRow: React.FC<CalendarRowProps> = ({
           {activeDay === i + 1 &&
           new Date().getMonth() === currentMonth &&
           new Date().getFullYear() === currentYear ? (
-            <td className="relative py-3 px-2 md:px-3  hover:text-gray-500 text-center text-gray-800">
+            <td
+              onClick={() => {
+                chosenDay = i + 1;
+                setDate(chosenDay + 1, currentMonth, currentYear);
+              }}
+              className="relative py-3 px-2 md:px-3  hover:text-blue-600 text-center text-gray-800"
+            >
               <span className="p-1 rounded-full border-gray-400 border-2">
                 {i + 1}
               </span>
             </td>
           ) : (
-            <td className="relative py-3 px-2 md:px-3  hover:text-gray-500 text-center text-gray-800">
+            <td
+              onClick={() => {
+                chosenDay = i + 1;
+                setDate(chosenDay + 1, currentMonth, currentYear);
+              }}
+              className="relative py-3 px-2 md:px-3  hover:text-blue-600 text-center text-gray-800"
+            >
               {i + 1}
             </td>
           )}
@@ -59,13 +77,25 @@ const CalendarRow: React.FC<CalendarRowProps> = ({
           {activeDay === i + (7 * row - firstDay) &&
           new Date().getMonth() === currentMonth &&
           new Date().getFullYear() === currentYear ? (
-            <td className="relative py-3 px-2 md:px-3  hover:text-gray-500 text-center text-gray-800">
-              <span className="p-1 rounded-full border-gray-400 border-2">
+            <td className="relative py-3 px-2 md:px-3  hover:text-blue-600 text-center text-gray-800">
+              <span
+                onClick={() => {
+                  chosenDay = i + (7 * row - firstDay);
+                  setDate(chosenDay + 1, currentMonth, currentYear);
+                }}
+                className="p-1 rounded-full border-gray-400 border-2"
+              >
                 {i + (7 * row - firstDay)}
               </span>
             </td>
           ) : (
-            <td className="relative py-3 px-2 md:px-3  hover:text-gray-500 text-center text-gray-800">
+            <td
+              onClick={() => {
+                chosenDay = i + (7 * row - firstDay);
+                setDate(chosenDay + 1, currentMonth, currentYear);
+              }}
+              className="relative py-3 px-2 md:px-3  hover:text-blue-600 text-center text-gray-800"
+            >
               {i + (7 * row - firstDay)}
             </td>
           )}

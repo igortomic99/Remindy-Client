@@ -2,6 +2,7 @@ import { withUrqlClient } from "next-urql";
 import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import { Layout } from "../components/Layout";
+import { useMeQuery } from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 
 const Home = () => {
