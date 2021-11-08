@@ -3,7 +3,8 @@ import DateContext from "../context/dateContext";
 import TimeContext from "../context/timeContext";
 import { useAddReminderMutation } from "../generated/graphql";
 
-export const ReminderPreview = ({ text }) => {
+
+export const ReminderPreview = ({ text}) => {
     const [,addReminder] = useAddReminderMutation();
     const { day, month, year } = useContext(DateContext);
     const {hours, minutes} = useContext(TimeContext);

@@ -1,0 +1,7 @@
+mutation UpdateReminder($date: DateTime!, $text: String!, $id: String!) {
+  updateReminder(date: $date, text: $text, id: $id) {
+    _id
+    date
+    text
+  }
+}

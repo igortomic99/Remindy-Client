@@ -28,7 +28,7 @@ const CalendarRow: React.FC<CalendarRowProps> = ({
     content.push(
       <td
       onClick={() => {
-        setDate(2,currentMonth ,currentYear);
+        setDate(1,currentMonth ,currentYear);
       }}
       className="relative py-3 px-2 md:px-3  hover:text-blue-600 text-center text-gray-800">
         1
@@ -44,7 +44,7 @@ const CalendarRow: React.FC<CalendarRowProps> = ({
             <td
               onClick={() => {
                 chosenDay = i + 1;
-                setDate(chosenDay + 1, currentMonth, currentYear);
+                setDate(chosenDay, currentMonth, currentYear);
               }}
               className="relative py-3 px-2 md:px-3  hover:text-blue-600 text-center text-gray-800"
             >
@@ -56,7 +56,7 @@ const CalendarRow: React.FC<CalendarRowProps> = ({
             <td
               onClick={() => {
                 chosenDay = i + 1;
-                setDate(chosenDay + 1, currentMonth, currentYear);
+                setDate(chosenDay, currentMonth, currentYear);
               }}
               className="relative py-3 px-2 md:px-3  hover:text-blue-600 text-center text-gray-800"
             >
@@ -81,7 +81,7 @@ const CalendarRow: React.FC<CalendarRowProps> = ({
               <span
                 onClick={() => {
                   chosenDay = i + (7 * row - firstDay);
-                  setDate(chosenDay + 1, currentMonth, currentYear);
+                  setDate(chosenDay, currentMonth, currentYear);
                 }}
                 className="p-1 rounded-full border-gray-400 border-2"
               >
@@ -92,7 +92,7 @@ const CalendarRow: React.FC<CalendarRowProps> = ({
             <td
               onClick={() => {
                 chosenDay = i + (7 * row - firstDay);
-                setDate(chosenDay + 1, currentMonth, currentYear);
+                setDate(chosenDay, currentMonth, currentYear);
               }}
               className="relative py-3 px-2 md:px-3  hover:text-blue-600 text-center text-gray-800"
             >

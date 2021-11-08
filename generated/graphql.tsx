@@ -28,6 +28,7 @@ export type Mutation = {
   login: UserResponse;
   logout: Scalars['Boolean'];
   register: UserResponse;
+  updateReminder: Reminder;
 };
 
 
@@ -47,10 +48,23 @@ export type MutationRegisterArgs = {
   options: UsernamePasswordInput;
 };
 
+
+export type MutationUpdateReminderArgs = {
+  date: Scalars['DateTime'];
+  id: Scalars['String'];
+  text: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   me: User;
+  reminder: Reminder;
   userReminders: Array<Reminder>;
+};
+
+
+export type QueryReminderArgs = {
+  id: Scalars['String'];
 };
 
 export type Reminder = {
@@ -109,10 +123,26 @@ export type RegisterMutationVariables = Exact<{
 
 export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'FieldError', field: string, message: string }> | null | undefined, user?: { __typename?: 'User', _id: string, username: string, email: string, phoneNumber: number } | null | undefined } };
 
+export type UpdateReminderMutationVariables = Exact<{
+  date: Scalars['DateTime'];
+  text: Scalars['String'];
+  id: Scalars['String'];
+}>;
+
+
+export type UpdateReminderMutation = { __typename?: 'Mutation', updateReminder: { __typename?: 'Reminder', _id: string, date: any, text: string } };
+
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MeQuery = { __typename?: 'Query', me: { __typename?: 'User', _id: string, email: string, username: string, phoneNumber: number } };
+
+export type ReminderQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type ReminderQuery = { __typename?: 'Query', reminder: { __typename?: 'Reminder', _id: string, date: any, text: string } };
 
 export type UserRemindersQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -182,6 +212,19 @@ export const RegisterDocument = gql`
 export function useRegisterMutation() {
   return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
 };
+export const UpdateReminderDocument = gql`
+    mutation UpdateReminder($date: DateTime!, $text: String!, $id: String!) {
+  updateReminder(date: $date, text: $text, id: $id) {
+    _id
+    date
+    text
+  }
+}
+    `;
+
+export function useUpdateReminderMutation() {
+  return Urql.useMutation<UpdateReminderMutation, UpdateReminderMutationVariables>(UpdateReminderDocument);
+};
 export const MeDocument = gql`
     query Me {
   me {
@@ -195,6 +238,19 @@ export const MeDocument = gql`
 
 export function useMeQuery(options: Omit<Urql.UseQueryArgs<MeQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<MeQuery>({ query: MeDocument, ...options });
+};
+export const ReminderDocument = gql`
+    query Reminder($id: String!) {
+  reminder(id: $id) {
+    _id
+    date
+    text
+  }
+}
+    `;
+
+export function useReminderQuery(options: Omit<Urql.UseQueryArgs<ReminderQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<ReminderQuery>({ query: ReminderDocument, ...options });
 };
 export const UserRemindersDocument = gql`
     query UserReminders {

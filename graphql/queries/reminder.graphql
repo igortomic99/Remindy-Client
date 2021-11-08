@@ -1,0 +1,7 @@
+query Reminder($id: String!){
+  reminder(id: $id){
+    _id
+    date
+    text
+  }
+}
