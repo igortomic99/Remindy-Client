@@ -17,7 +17,7 @@ export const DropdownMenu = ({ me }) => {
       >
         <div className="py-1 bg-white" role="none">
           <a
-            href="/settings"
+            href="/user-settings"
             className="text-gray-700 block px-4 py-2 text-sm"
             role="menuitem"
             id="menu-item-0"
@@ -25,7 +25,7 @@ export const DropdownMenu = ({ me }) => {
             Account settings
           </a>
           <a
-            href="/subscribe"
+            href="/subscription"
             className="text-gray-700 block px-4 py-2 text-sm"
             role="menuitem"
             id="menu-item-1"

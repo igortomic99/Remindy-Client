@@ -17,29 +17,33 @@ export const NavigationBar = () => {
     body = (
       <>
         <button
-          id="navAction"
+          type="button"
+          className="inline-flex mr-4 justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-500"
+          id="menu-button"
+          aria-expanded="true"
+          aria-haspopup="true"
           onClick={() => {
             router.push("/login");
           }}
-          className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out mr-5"
         >
           Login
         </button>
         <button
-          id="navAction"
+          type="button"
+          className="inline-flex mr-4 justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-gray-500"
+          id="menu-button"
+          aria-expanded="true"
+          aria-haspopup="true"
           onClick={() => {
             router.push("/register");
           }}
-          className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out ml-5"
         >
           Register
         </button>
       </>
     );
   } else {
-    body = (
-      <DropdownMenu me={data?.me.username}/>
-    );
+    body = <DropdownMenu me={data?.me.username} />;
   }
   return (
     <>
