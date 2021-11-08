@@ -19,7 +19,7 @@ const UserPanel = () => {
   return (
     <Layout>
       <Reminders />
-      <div className="-ml-28 -mt-2">
+      <div className="-ml-32 -mt-2">
         <Calendar />
       </div>
       <div className="ml-56 mt-10">

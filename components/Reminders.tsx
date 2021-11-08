@@ -7,7 +7,7 @@ export const Reminders = () => {
       <div className="fixed flex h-full">
         <div className="absolute flex top-0 h-screen">
           <div className="bg-gray-300 overflow-hidden flex justify-center">
-            <div className="flex w-72 mt-10 font-bold text-xl text-white justify-center ">
+            <div className="flex w-80 mt-10 font-bold text-xl text-white justify-center ">
              <ReminderList/>
             </div>
           </div>

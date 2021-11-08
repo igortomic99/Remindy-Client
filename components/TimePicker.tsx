@@ -38,6 +38,18 @@ export const TimePicker = () => {
             <option value="11">10 </option>
             <option value="12">11 </option>
             <option value="13">12 </option>
+            <option value="14">13 </option>
+            <option value="15">14</option>
+            <option value="16">15</option>
+            <option value="17">16</option>
+            <option value="18">17</option>
+            <option value="19">18</option>
+            <option value="20">19</option>
+            <option value="21">20</option>
+            <option value="22">21</option>
+            <option value="23">22</option>
+            <option value="24">23</option>
+            <option value="00">24</option>
           </select>
           <span className="text-xl ml-3 mr-3"> :</span>
           <select
@@ -61,13 +73,6 @@ export const TimePicker = () => {
             <option value="45">45</option>
             <option value="50">50</option>
             <option value="55">55</option>
-          </select>
-          <select
-            name="ampm"
-            className="bg-transparent text-xl appearance-none outline-none"
-          >
-            <option value="am">AM</option>
-            <option value="pm">PM</option>
           </select>
         </div>
       </div>
