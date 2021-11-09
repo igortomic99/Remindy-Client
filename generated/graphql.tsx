@@ -25,6 +25,8 @@ export type FieldError = {
 export type Mutation = {
   __typename?: 'Mutation';
   addReminder: Reminder;
+  deleteReminders: Scalars['Boolean'];
+  editUser: UserResponse;
   login: UserResponse;
   logout: Scalars['Boolean'];
   register: UserResponse;
@@ -34,7 +36,14 @@ export type Mutation = {
 
 export type MutationAddReminderArgs = {
   date: Scalars['DateTime'];
+  phoneNumber: Scalars['String'];
   text: Scalars['String'];
+};
+
+
+export type MutationEditUserArgs = {
+  email: Scalars['String'];
+  phoneNumber: Scalars['Float'];
 };
 
 
@@ -98,6 +107,7 @@ export type UsernamePasswordInput = {
 export type AddReminderMutationVariables = Exact<{
   date: Scalars['DateTime'];
   text: Scalars['String'];
+  phoneNumber: Scalars['String'];
 }>;
 
 
@@ -151,8 +161,8 @@ export type UserRemindersQuery = { __typename?: 'Query', userReminders: Array<{ 
 
 
 export const AddReminderDocument = gql`
-    mutation AddReminder($date: DateTime!, $text: String!) {
-  addReminder(date: $date, text: $text) {
+    mutation AddReminder($date: DateTime!, $text: String!, $phoneNumber: String!) {
+  addReminder(date: $date, text: $text, phoneNumber: $phoneNumber) {
     _id
     date
     text

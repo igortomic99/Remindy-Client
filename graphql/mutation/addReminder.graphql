@@ -1,5 +1,5 @@
-mutation AddReminder($date: DateTime!,$text: String!){
-  addReminder(date: $date, text: $text){
+mutation AddReminder($date: DateTime!,$text: String!,$phoneNumber:String!){
+  addReminder(date: $date, text: $text,phoneNumber: $phoneNumber){
     _id
     date
     text
